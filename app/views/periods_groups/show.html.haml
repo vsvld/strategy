@@ -1,0 +1,32 @@
+-#%p#notice= notice
+
+%h2 Група періодів
+
+%p
+  %b Тип:
+  = @periods_group.period_type
+%p
+  %b Початок:
+  = @periods_group.date_from
+%p
+  %b Кінець:
+  = @periods_group.date_to
+%p
+  %b Компанії:
+  = @periods_group.companies.pluck(:name).join(', ')
+
+
+-#%h2 Включені періоди і їх показники
+-#
+-#%table.table
+-#  %tr
+-#    %th Показник
+-#    %th Значення
+-#  - @period.financial_indicators.each do |fi|
+-#    %tr
+-#      %td= fi.name
+-#      %td= [fi.value, fi.units].join(' ')
+
+= link_to 'Змінити', edit_company_periods_group_path(@company, @periods_group)
+\|
+= link_to 'Назад', company_periods_groups_path(@company)

@@ -1,0 +1,8 @@
+.jumbotron
+  %h1 Вітаємо!
+  %p На цьому сайті ви зможете створити конкурентну стратегію для свого підприємства за мить!
+  %p
+    - if signed_in?
+      = link_to 'Перейти к компаніям', companies_path, class: 'btn btn-primary btn-lg'
+    - else
+      = link_to 'Увійти', sign_in_path, class: 'btn btn-primary btn-lg'

@@ -1,0 +1,32 @@
+-#%p#notice= notice
+
+%h2 Період
+
+%p
+  %b Тип:
+  = @period.period_type
+%p
+  %b Початок:
+  = @period.date_from
+%p
+  %b Кінець:
+  = @period.date_to
+
+
+%h2 Фінансові показники
+
+- if @period.financial_indicators.empty?
+  %p Поки що не додано жодного фінансового показника для цього періоду
+- else
+  %table.table
+    %tr
+      %th Показник
+      %th Значення
+    - @period.financial_indicators.each do |fi|
+      %tr
+        %td= fi.name
+        %td= [fi.value, fi.units].join(' ')
+
+= link_to 'Змінити', edit_company_period_path(@company, @period)
+\|
+= link_to 'Назад', company_periods_path(@company)

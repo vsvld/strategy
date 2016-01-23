@@ -1,0 +1,9 @@
+= simple_form_for([@company, @strategy]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :strategy_model, collection: StrategyModel.all, label_method: :name_with_type
+    = f.association :periods_group, collection: @company.periods_groups
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,17 @@
+= simple_form_for([@company, @period]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :period_type, collection: %w(month quarter year)
+    = f.input :date_from, as: :date # TODO more years
+    = f.input :date_to, as: :date
+
+  %h3 Фінансові показники
+  #financial_indicators
+    = f.simple_fields_for :financial_indicators do |fin_ind|
+      = render 'financial_indicator_fields', f: fin_ind
+    .links
+      = link_to_add_association 'Додати показник', f, :financial_indicators
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,28 @@
+%h1= "Групи періодів для #{@company.name}"
+
+%table.table
+  %thead
+    %tr
+      %th Тип
+      %th Початок
+      %th Кінець
+      %th Періодів
+      %th Компаній
+      %th
+      %th
+
+  %tbody
+    - @periods_groups.each do |periods_group|
+      -# TODO data
+      %tr
+        %td= periods_group.period_type
+        %td= periods_group.date_from
+        %td= periods_group.date_to
+        %td= periods_group.periods.size
+        %td= periods_group.companies.size
+        %td= link_to 'Показати', company_periods_group_path(@company, periods_group)
+        %td= link_to 'Видалити', company_periods_group_path(@company, periods_group), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Нова група періодів', new_company_periods_group_path(@company)

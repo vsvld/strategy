@@ -1,0 +1,21 @@
+-#%p#notice= notice
+
+%p
+  %b Назва:
+  = @company.name
+%p
+  %b Код:
+  = @company.code
+%p
+  %b Деталі:
+  = @company.details
+
+%p
+  = link_to 'Періоди компанії', company_periods_path(@company), class: 'btn btn-default'
+  = link_to 'Групи періодів для аналізу', company_periods_groups_path(@company), class: 'btn btn-default'
+  = link_to 'Стратегії для компанії', company_strategies_path(@company), class: 'btn btn-default'
+
+%p
+  = link_to 'Змінити', edit_company_path(@company)
+  \|
+  = link_to 'Назад', companies_path

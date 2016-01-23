@@ -1,0 +1,28 @@
+%h1= "Періоди для #{@company.name}"
+
+- if @periods.empty?
+  %h2 Поки що немає періодів для цієї компанії.
+- else
+  %table.table
+    %thead
+      %tr
+        %th Тип
+        %th Початок
+        %th Кінець
+        %th
+        %th
+        %th
+
+    %tbody
+      - @periods.each do |period|
+        %tr
+          %td= period.period_type
+          %td= period.date_from
+          %td= period.date_to
+          %td= link_to 'Показати', company_period_path(@company, period)
+          %td= link_to 'Змінити', edit_company_period_path(@company, period)
+          %td= link_to 'Видалити', company_period_path(@company, period), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Новий період', new_company_period_path

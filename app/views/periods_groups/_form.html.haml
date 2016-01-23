@@ -1,0 +1,12 @@
+= simple_form_for([@company, @periods_group]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :period_type, collection: %w(month quarter year)
+    = f.input :main_company_periods, collection: @company.periods, label_method: :name, value_method: :id, as: :check_boxes
+
+    - if @competitors.present?
+      = f.input :competitive_companies, collection: current_user.companies.where.not(id: @company.id), label_method: :name, value_method: :id, as: :check_boxes
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,16 @@
+-#%p#notice= notice
+
+%h2= @strategy.concrete_strategy.name
+
+%p
+  %strong Тип:
+  = @strategy.strategy_type.name
+%p
+  %strong Період:
+  = @strategy.periods_group.name
+%p
+  %strong Опис:
+  = @strategy.concrete_strategy.description
+
+
+= link_to 'Назад', company_strategies_path(@company)

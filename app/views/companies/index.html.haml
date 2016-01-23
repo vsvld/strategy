@@ -1,0 +1,23 @@
+%h1 Компанії
+
+%table.table
+  %thead
+    %tr
+      %th Назва
+      %th Код
+      %th
+      %th
+      %th
+
+  %tbody
+    - @companies.each do |company|
+      %tr
+        %td= company.name
+        %td= company.code
+        %td= link_to 'Показати', company
+        %td= link_to 'Змінити', edit_company_path(company)
+        %td= link_to 'Видалити', company, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Нова компанія', new_company_path

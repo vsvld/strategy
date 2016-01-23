@@ -1,0 +1,28 @@
+%h1= "Стратегії для #{@company.name}"
+
+- if @strategies.empty?
+  %h3 Поки що немає стратегій для цієї компанії.
+- else
+  %table.table
+    %thead
+      %tr
+        %th Тип
+        %th Модель
+        %th Обрана стратегія
+        %th Період
+        %th
+        %th
+
+    %tbody
+      - @strategies.each do |strategy|
+        %tr
+          %td= strategy.strategy_type.name
+          %td= strategy.strategy_model.name
+          %td= strategy.concrete_strategy.name
+          %td= strategy.periods_group.name
+          %td= link_to 'Показати', company_strategy_path(@company, strategy)
+          %td= link_to 'Видалити', company_strategy_path(@company, strategy), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'Розробити нову стратегію', new_company_strategy_path(@company)
